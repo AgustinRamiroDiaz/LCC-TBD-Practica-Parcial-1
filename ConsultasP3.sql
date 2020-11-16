@@ -156,3 +156,33 @@ where not exists
     and pid in (select pid from p where color = 'Rojo')
     and sid in (select sid from s where Ciudad = 'Londres')
 );
+
+--31
+select DISTINCT jid
+from spj as x
+where x.sid = 1 and not exists
+(
+    select * from spj as y
+    where x.jid = y.jid
+    and sid <> 1
+);
+
+--32
+(select ciudad from s)
+UNION 
+(select ciudad from p)
+union
+(select ciudad from j)
+order by ciudad;
+
+--33
+update P
+set color = 'Gris'
+where color = 'Rojo';
+
+--34
+delete from J
+where not exists (select * from spj where spj.jid = j.jid);
+
+--35
+insert into S values('S10', 'Salazar', null, 'Nueva York')
