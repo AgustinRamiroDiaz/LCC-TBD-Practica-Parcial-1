@@ -1,8 +1,55 @@
 --I
 
 --AR
---1 TODO REVISAR
-(trabajaEn |x| realiza) / requiere
+--1 
+pi Empleado, Departamento, Curso
+    (sigma 
+        trabajaEn.departamento!=requiere.departamento or 
+        realiza.curso=requiere.curso 
+            (trabajaEn |x| realiza) x requiere)
+/ requiere
+
+E D C
+E D C
+
+'Agus'  'Ñoquis'    'RCP'
+'Agus'  'Ñoquis'    'BaB'
+'Litma' 'RRHH'      'CS'
+'Facu'   'RRHH'     'xd'
+
+'Ñoquis'    'RCP'
+'Ñoquis'    'BaB'
+'Ñoquis'    'xd'
+'RRHH'      'CS'
+
+'Agus'  'Ñoquis'    'RCP'       'Ñoquis'    'RCP'
+                                'Ñoquis'    'BaB'
+                                'RRHH'      'CS'
+                                'Ñoquis'    'xd'
+'Agus'  'Ñoquis'    'BaB'       'Ñoquis'    'RCP'
+                                'Ñoquis'    'BaB'
+                                'RRHH'      'CS'
+                                'Ñoquis'    'xd'
+'Litma' 'RRHH'      'CS'        'Ñoquis'    'RCP'
+                                'Ñoquis'    'BaB'
+                                'RRHH'      'CS'
+                                'Ñoquis'    'xd'
+'Facu'   'RRHH'     'xd'        'Ñoquis'    'RCP'
+                                'Ñoquis'    'BaB'
+                                'RRHH'      'CS'
+                                'Ñoquis'    'xd'                
+
+
+'Agus'  'Ñoquis'            'Ñoquis'    'RCP'
+                            'Ñoquis'    'BaB'
+                            'RRHH'      'CS'
+'Litma' 'RRHH'              'Ñoquis'    'RCP'
+                            'Ñoquis'    'BaB'
+                            'RRHH'      'CS'
+                            'Ñoquis'    'xd'
+'Facu'  'RRHH'              'Ñoquis'    'RCP'
+                            'Ñoquis'    'BaB'
+                            'Ñoquis'    'xd'
 
 --2
 pi curso (sigma departamento='RRHH'||departamento='Seguridad' Requiere)
