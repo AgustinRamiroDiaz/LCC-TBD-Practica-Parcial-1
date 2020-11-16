@@ -142,7 +142,7 @@ select distinct pid
 from spj
 where exists (select * from j where spj.jid = j.jid and Ciudad = 'Londres');
 
---29    TODO REVISAR ????????????????
+--29
 select distinct spjx.jid
 from spj as spjx
 where exists (select * from spj as spjy where spjx.jid = spjy.jid and sid = 1);
