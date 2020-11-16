@@ -1,13 +1,14 @@
 --I
 
 --AR
---1
+--1 TODO REVISAR
+(trabajaEn |x| realiza) / requiere
 
 --2
-
+pi curso (sigma departamento='RRHH'||departamento='Seguridad' Requiere)
 
 --3
-
+pi departamento Requiere - pi departamento (trabajaEn |x| requiere |x| realiza)
 
 --SQL
 --1
