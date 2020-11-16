@@ -1,6 +1,25 @@
+--I
 
+--1
 
 --2
+select distinct curso
+from requiere
+where departamento = 'RRHH' or departamento = 'Seguridad'; 
+
+--3
+select departamento
+from requiere
+where 
+not exists 
+(
+    select * 
+    from trabajaEn, realiza 
+    where trabajaEn.departamento = requiere.departamento and trabajaEn.empleado = realiza.empleado 
+    and requiere.curso = realiza.curso
+);
+
+--II
 
 --a
 
