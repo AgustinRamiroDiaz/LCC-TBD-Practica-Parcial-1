@@ -1,6 +1,26 @@
 --I
 
+--AR
 --1
+
+--2
+
+
+--3
+
+
+--SQL
+--1
+select empleado
+from trabajaEn
+where not exists 
+(
+    select curso
+    from requiere 
+    where requiere.departamento = trabajaEn.departamento
+    and not in (select curso from realiza where trabajaEn.empleado = realiza.empleado) 
+);
+
 
 --2
 select distinct curso
