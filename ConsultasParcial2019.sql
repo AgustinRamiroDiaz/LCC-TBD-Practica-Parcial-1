@@ -76,3 +76,17 @@ and aOrigen.Pais <> aDestino.Pais
 GROUP BY piloto.pais) as t
 where t.cant > 10
 
+--b
+
+--4 
+CVuelos <- pi codVuelo (sigma codAerop=codAeropOrigen and pais='Paraguay' vuelo x aeropuerto)
+(pi NombrePiloto, codvuelo (asignacionViaje |x| piloto)) / CVuelos
+
+--5
+pi NombrePiloto (piloto |x| asignacionViaje |x| (sigma codAerop=codAeropDestino and pais='Chile' vuelo x aeropuerto))
+intersección
+pi NombrePiloto (piloto |x| asignacionViaje |x| (sigma codAerop=codAeropDestino and pais='Uruguay' vuelo x aeropuerto))
+
+--6
+vuelosJG <- pi codVuelo ((sigma NombrePiloto='Juan González' piloto) |x| asignacionViaje)
+sigma NombrePiloto!='Juan González' ((pi NombrePiloto, codvuelo (asignacionViaje |x| piloto)) / vuelosJG)
