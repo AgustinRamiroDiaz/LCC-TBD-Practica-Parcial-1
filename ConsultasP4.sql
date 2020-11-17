@@ -111,6 +111,27 @@ and socio.aficionado = gusta.aficionado;
 select aficionado from (select aficionado from gusta) UNION (select aficionado from socio) where aficionado not in b;
 
 --d
+select videoclub
+from videoteca
+where pelicula = "A" or pelicula = "B"
+group by videoclub
+having count (*) = 2;
+
+select videoclub
+from videoteca
+where exists (select * from videoclub as v2 where videoclub.videoteca=v2.videoteca and pelicula='A')
+and   exists (select * from videoclub as v2 where videoclub.videoteca=v2.videoteca and pelicula='B')
+
+select videoclub
+from videoteca
+where 'A' in (select pelicula from videoteca as v2 where videoteca.videoclub=v2.videoclub)
+and   'B' in (select pelicula from videoteca as v2 where videoteca.videoclub=v2.videoclub)
 
 
-
+--e
+select distinct aficionado
+from socio, gusta, videoteca
+where socio.videoclub = videoteca.videoclub 
+and videoteca.pelicula = gusta.pelicula
+and socio.aficionado = gusta.aficionado;
+GROUP BY socio.aficionado having (count(DISTINCT videoteca.videoclub) >= 2);
