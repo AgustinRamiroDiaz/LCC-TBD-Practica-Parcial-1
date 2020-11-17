@@ -91,7 +91,17 @@ cch <-σ_(nombrePadre=NombreVaron and nombreMadre=NombreMujer and FechaRealizaci
 π_nombrePadre(cch) U π_nombreMadre(cch)
 
 -- TODO SQL
+select nombreMujer, nombreVaron
+from matrimonio
+where not exists (select * from persona where nombreMadre=nombreMujer ...join... and sexo='F')
 
+--7
+
+select nombreMujer, nombreVaron
+from persona, (select nombreMujer, nombreVaron, min(fechaRealizacion), min(fechaFin)
+                from matrimonio 
+                group by nombreMujer, nombreVaron)
+where joinear
 
 
 -- Ejercicios Adicionales
