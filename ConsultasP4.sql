@@ -116,7 +116,7 @@ and videoteca.pelicula = gusta.pelicula
 and socio.aficionado = gusta.aficionado;
 
 --c
-select aficionado from (select aficionado from gusta) UNION (select aficionado from socio) where aficionado not in b;
+select 1 from ((select aficionado from gusta) UNION (select aficionado from socio)) where 1 not in b;
 
 --d
 select videoclub
